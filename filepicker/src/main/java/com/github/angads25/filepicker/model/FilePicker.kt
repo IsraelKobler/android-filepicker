@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Angad Singh
+ * Copyright (C) 2018 Angad Singh
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,12 @@
  * limitations under the License.
  */
 
-package com.github.angads25.filepicker.controller;
+package com.github.angads25.filepicker.model
 
-/* <p>
- * Created by Angad Singh on 10-07-2016.
+/**<p>
+ * Created by Angad Singh on 15/11/18.
  * </p>
  */
+interface FilePicker {
 
-/**
- * Interface definition for a callback to be invoked
- * when dialog selects files.
- */
-public interface DialogSelectionListener {
-
-    /**
-     * The method is called when files or directories are selected.
-     *
-     * @param files The array of String containing selected file paths.
-     */
-    void onSelectedFilePaths(String files[]);
 }

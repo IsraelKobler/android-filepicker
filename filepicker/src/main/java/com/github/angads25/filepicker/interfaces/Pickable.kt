@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Angad Singh
+ * Copyright (C) 2018 Angad Singh
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.github.angads25.filepicker.widget;
+package com.github.angads25.filepicker.interfaces
 
-/**
- * <p>
- * Created by Angad on 20-05-2017.
+import androidx.annotation.NonNull
+
+/**<p>
+ * Created by Angad Singh on 25/11/18.
  * </p>
  */
-
-public interface OnCheckedChangeListener {
-    void onCheckedChanged(MaterialCheckbox checkbox, boolean isChecked);
+interface Pickable <in Selectable> {
+    fun onSelectionChanged(@NonNull pickable: Selectable, state: Boolean)
 }

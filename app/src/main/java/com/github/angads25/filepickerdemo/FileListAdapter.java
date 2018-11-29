@@ -17,13 +17,15 @@
 package com.github.angads25.filepickerdemo;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**<p>
  * Created by Angad Singh on 11-07-2016.
@@ -40,13 +42,14 @@ class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.FileListViewH
     }
 
     @Override
-    public FileListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public FileListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.file_list_item, parent, false);
         return new FileListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(FileListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FileListViewHolder holder, int position) {
         holder.name.setText(listItems.get(position).getName());
         holder.path.setText(listItems.get(position).getPath());
     }

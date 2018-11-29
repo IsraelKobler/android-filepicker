@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +29,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.github.angads25.filepicker.view.FilePickerPreference;
+import androidx.appcompat.widget.Toolbar;
+
+//import com.github.angads25.filepicker.view.FilePickerPreference;
 
 /**<p>
  * Created by Angad on 22/07/2016.
@@ -43,8 +44,8 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     protected void onCreate(Bundle savedInstanceState)
     {   super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
-        FilePickerPreference fileDialog=(FilePickerPreference)findPreference("directories");
-        fileDialog.setOnPreferenceChangeListener(this);
+//        FilePickerPreference fileDialog=(FilePickerPreference)findPreference("directories");
+//        fileDialog.setOnPreferenceChangeListener(this);
     }
 
     @SuppressWarnings("deprecation")

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Angad Singh
+ * Copyright (C) 2018 Angad Singh
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,9 @@
  * limitations under the License.
  */
 
-package com.github.angads25.filepicker.controller;
+package com.github.angads25.filepicker.model
 
-/**<p>
- * Created by Angad Singh on 11-07-2016.
- * </p>
- */
-
-/**
- * Interface definition for a callback to be invoked
- * when a checkbox is checked.
- */
-public interface NotifyItemChecked {
-
-    /**
-     * Called when a checkbox is checked.
-     */
-    void notifyCheckBoxIsClicked();
+open class Selectable {
+    var isSelected: Boolean = false
+    var isSelectable: Boolean = false
 }

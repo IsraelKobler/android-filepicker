@@ -20,8 +20,9 @@ package com.github.angads25.filepickerdemo;
  * Created by Angad Singh on 11-07-2016.
  * </p>
  */
-public class ListItem
-{   private String name,path;
+public class ListItem {
+    private String name, path;
+    private int itemType;
 
     public String getName() {
         return name;
@@ -37,5 +38,13 @@ public class ListItem
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public int getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(int itemType) {
+        this.itemType = itemType;
     }
 }
