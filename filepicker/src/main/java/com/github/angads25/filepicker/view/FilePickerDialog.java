@@ -42,6 +42,9 @@ import com.github.angads25.filepicker.model.MarkedItemList;
 import com.github.angads25.filepicker.utils.ExtensionFilter;
 import com.github.angads25.filepicker.utils.Utility;
 import com.github.angads25.filepicker.widget.MaterialCheckbox;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -98,6 +101,7 @@ public class FilePickerDialog extends Dialog implements AdapterView.OnItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        initImageLoading();
         setContentView(R.layout.dialog_main);
         listView = (ListView) findViewById(R.id.fileList);
         select = (Button) findViewById(R.id.select);
@@ -242,6 +246,24 @@ public class FilePickerDialog extends Dialog implements AdapterView.OnItemClickL
             listView.setOnItemClickListener(this);
         }
     }
+
+    private void initImageLoading() {
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(R.mipmap.ic_type_file)
+                .showImageOnLoading(R.mipmap.ic_type_file)
+                .showImageOnFail(R.mipmap.ic_type_file)
+                .considerExifParams(true)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getContext()).defaultDisplayImageOptions(options).build();
+
+        ImageLoader.getInstance().init(config);
+
+    }
+
 
     private boolean validateOffsetPath() {
         String offset_path = properties.offset.getAbsolutePath();

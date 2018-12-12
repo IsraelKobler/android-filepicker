@@ -17,12 +17,14 @@
 package com.github.angads25.filepicker.controller.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.MimeTypeMap;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,6 +38,7 @@ import com.github.angads25.filepicker.model.FileListItem;
 import com.github.angads25.filepicker.model.MarkedItemList;
 import com.github.angads25.filepicker.widget.MaterialCheckbox;
 import com.github.angads25.filepicker.widget.OnCheckedChangeListener;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,13 +118,35 @@ public class FileListAdapter extends BaseAdapter{
             }
         }
         else {
-            holder.type_icon.setImageResource(R.mipmap.ic_type_file);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                holder.type_icon.setColorFilter(context.getResources().getColor(R.color.colorAccent,context.getTheme()));
-            }
-            else
-            {   holder.type_icon.setColorFilter(context.getResources().getColor(R.color.colorAccent));
-            }
+
+            String type = MimeTypeMap.getFileExtensionFromUrl(item.getLocation());
+
+            if (type != null)
+
+                switch (type) {
+                    case "jpeg": // fall through cases
+                    case "bmp":
+                    case "jpg":
+                    case "png":
+
+                        holder.type_icon.setColorFilter(0);
+                        ImageLoader.getInstance().displayImage("file://"+item.getLocation(),holder.type_icon);
+
+                        break;
+
+                    default:
+                        holder.type_icon.setImageResource(R.mipmap.ic_type_file);
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            holder.type_icon.setColorFilter(context.getResources().getColor(R.color.colorAccent,context.getTheme()));
+                        }
+                        else
+                        {   holder.type_icon.setColorFilter(context.getResources().getColor(R.color.colorAccent));
+                        }
+                        break;
+                }
+
+
             if(properties.selection_type == DialogConfigs.DIR_SELECT)
             {   holder.fmark.setVisibility(View.INVISIBLE);
             }
